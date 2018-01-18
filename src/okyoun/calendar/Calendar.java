@@ -3,17 +3,20 @@ package okyoun.calendar;
 import java.util.Scanner;
 
 public class Calendar {
-	
-	private static final int[] MAX_DAY=  {31,28,31,30,31,30,31,30,31,30,31,31};
+	String PROMPT="cal>";
+	private static final int[] MAX_DAY=  {1,2,3,4,5,6,31,30,31,30,31,31};
 	public int maxDaysOfMonth(int month) {
 		return MAX_DAY[month-1];
 	}
-	public void getMonth(int num) {
+	public void getMonth() {
 		Scanner s=new Scanner(System.in);
-		for(int i=0;i<num;i++) {
+		while(true) {
 			System.out.println("월을 입력");
+			System.out.println(PROMPT);
 			int month=s.nextInt();
-			System.out.println(MAX_DAY[month]);
+			if(month==-1)break;
+			if(month>12||month<1)continue;
+			System.out.println(MAX_DAY[month-1]);
 		}	
 	s.close();
 	
@@ -23,13 +26,14 @@ public class Calendar {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
+		
 		Scanner s=new Scanner(System.in);
 		Calendar cal=new Calendar();
 		
 		
-		System.out.println("반복횟수를 입력");
-		int num=s.nextInt();
-		cal.getMonth(num);
+		//System.out.println("반복횟수를 입력");
+		//int num=s.nextInt();
+		cal.getMonth();
 		System.out.println("끝");
 		
 //		if(num<1||num>12)
